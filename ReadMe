@@ -1,0 +1,37 @@
+=================================
+  TESTBENCH'S FILE STRUCTURE
+=================================
+Here is a brief description of each one of the directories in this project:
+ * doc/:  PDF verification plan (aka testplan).
+ * rtl/:  Verilog source code for the DUT.
+ * scripts/:  Scripts required to run a regression.
+ * sim/:  runsim files for all testcases with the required VCS flags.
+ * testbench/:  Source code for all the testbench components.
+ * testcases/:  Test case files.
+
+
+=================================
+  HOW TO RUN A TEST/REGRESSION?
+=================================
+Go to the scripts/ directory and type "make".  This will display the Makefile
+usage.  You can choose to run all the test cases at once in a regression-like
+manner as shown below:
+
+ > make regress
+
+You can also run one test case by providing the make target alias that is shown
+in the usage.  For instance, if you want to run the "bringup_packet_test", you
+can use the make script to do so as shown below:
+
+ > make t1
+
+If you choose to run a full regression, a perl script will be invoked by the
+Makefile in order to parse the log files and generate a report that contains
+test cases with a passing/failing/unknown log signature.
+
+Alternatively, if you don't want to use the make script and just want to use 
+the runsim scripts in order to run tests manually, go to the sim/ directory and
+run the scripts that corresponds to the test case that you would like to run.
+For instance, if you want to run the "zero_ipg_packet_test", you can do:
+
+ > ./runsim.loopback_test
